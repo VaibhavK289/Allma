@@ -1,5 +1,25 @@
-fastapi==0.110.0
-uvicorn==0.29.0
-ollama==0.1.8
-pydantic==2.6.4
-python-multipart==0.0.9
+# Core Framework
+fastapi>=0.110.0
+uvicorn>=0.29.0
+pydantic>=2.6.4
+python-multipart>=0.0.9
+
+# Ollama Integration
+ollama>=0.1.8
+
+# Vector Store
+chromadb>=0.4.24
+
+# Document Processing
+pypdf==4.0.2
+python-docx==1.1.0
+beautifulsoup4==4.12.3
+
+# Utilities
+python-dotenv==1.0.1
+aiofiles==23.2.1
+httpx==0.27.0
+
+# Optional: Alternative vector stores (uncomment as needed)
+# faiss-cpu==1.7.4
+# qdrant-client==1.7.3
