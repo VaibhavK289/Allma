@@ -1,4 +1,4 @@
-#  Allma Studio
+# Allma Studio
 
 <div align="center">
 
@@ -21,24 +21,24 @@
 
 ---
 
-##  Table of Contents
+## Table of Contents
 
-- [Overview](#-overview)
-- [Features](#-features)
-- [Architecture](#-architecture)
-- [Tech Stack](#-tech-stack)
-- [Quick Start](#-quick-start)
-- [Installation](#-installation)
-- [Configuration](#-configuration)
-- [API Reference](#-api-reference)
-- [Deployment](#-deployment)
-- [Project Structure](#-project-structure)
-- [Contributing](#-contributing)
-- [License](#-license)
+- [Overview](#overview)
+- [Features](#features)
+- [Architecture](#architecture)
+- [Tech Stack](#tech-stack)
+- [Quick Start](#quick-start)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [API Reference](#api-reference)
+- [Deployment](#deployment)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
-##  Overview
+## Overview
 
 **Allma Studio** is a full-stack AI chat application that runs entirely on your local machine, ensuring complete privacy and data control. It combines the power of local Large Language Models (LLMs) via Ollama with Retrieval-Augmented Generation (RAG) to provide intelligent, context-aware responses based on your own documents.
 
@@ -46,38 +46,38 @@
 
 | Traditional AI Chat | Allma Studio |
 |---------------------|--------------|
-|  Data sent to cloud servers |  100% local processing |
-|  Pay-per-token pricing |  Free after setup |
-|  Requires internet |  Works offline |
-|  Privacy concerns |  Your data stays yours |
-|  Generic responses |  RAG-powered with your docs |
+| Data sent to cloud servers | 100% local processing |
+| Pay-per-token pricing | Free after setup |
+| Requires internet | Works offline |
+| Privacy concerns | Your data stays yours |
+| Generic responses | RAG-powered with your docs |
 
 ---
 
-## ✨ Features
+## Features
 
-###  AI Capabilities
+### AI Capabilities
 - **Local LLM Integration** - Run powerful models like DeepSeek, Gemma, Qwen, and LLaMA locally via Ollama
 - **RAG Pipeline** - Upload documents and get AI responses grounded in your own data
 - **Smart Chunking** - Intelligent document splitting for optimal context retrieval
 - **Semantic Search** - ChromaDB-powered vector similarity search
 - **Conversation Memory** - Persistent chat history with context awareness
 
-###  User Interface
+### User Interface
 - **Modern React UI** - Clean, responsive design with TailwindCSS
 - **Real-time Streaming** - Token-by-token response streaming for better UX
 - **Dark/Light Mode** - Automatic theme detection with manual toggle
 - **Markdown Rendering** - Rich text formatting with syntax highlighting
 - **Mobile Responsive** - Works seamlessly on all device sizes
 
-###  Developer Experience
+### Developer Experience
 - **FastAPI Backend** - High-performance async Python API
 - **Hot Reload** - Both frontend and backend with development hot-reload
 - **Type Safety** - Pydantic models and TypeScript-ready API
 - **Docker Ready** - One-command deployment with Docker Compose
 - **Comprehensive Logging** - Structured logging with configurable levels
 
-###  Security & Privacy
+### Security & Privacy
 - **No Data Collection** - Zero telemetry, your data never leaves your machine
 - **CORS Protection** - Configurable cross-origin security
 - **Rate Limiting** - Built-in API rate limiting
@@ -85,7 +85,7 @@
 
 ---
 
-##  Architecture
+## Architecture
 
 ### System Architecture
 
@@ -148,7 +148,7 @@ Key entities:
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 
@@ -198,7 +198,7 @@ Key entities:
 
 ---
 
-##  Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -243,7 +243,7 @@ npm run dev
 
 ---
 
-##  Installation
+## Installation
 
 ### 1. Clone Repository
 
@@ -313,7 +313,7 @@ npm run dev
 
 ---
 
-##  Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -355,7 +355,7 @@ OPENAI_API_KEY=your-openai-api-key
 
 ---
 
-## 📚 API Reference
+## API Reference
 
 ### Base URL
 ```
@@ -513,17 +513,17 @@ Demo mode provides a simulated AI experience without requiring a backend.
 
 | Provider | Frontend | Backend | Ollama |
 |----------|----------|---------|--------|
-| Vercel | ✅ Native | ❌ | ❌ |
-| Railway | ✅ Docker | ✅ Docker | ❌ |
-| Render | ✅ Static | ✅ Docker | ❌ |
-| AWS ECS | ✅ Docker | ✅ Docker | ✅ GPU instances |
-| GCP Cloud Run | ✅ Docker | ✅ Docker | ✅ GPU instances |
+| Vercel | Yes (Native) | No | No |
+| Railway | Yes (Docker) | Yes (Docker) | No |
+| Render | Yes (Static) | Yes (Docker) | No |
+| AWS ECS | Yes (Docker) | Yes (Docker) | Yes (GPU instances) |
+| GCP Cloud Run | Yes (Docker) | Yes (Docker) | Yes (GPU instances) |
 
 For detailed deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ---
 
-##  Project Structure
+## Project Structure
 
 ```
 allma-studio/
@@ -588,7 +588,7 @@ allma-studio/
 
 ---
 
-##  Contributing
+## Contributing
 
 We welcome contributions! Please follow these steps:
 
@@ -630,13 +630,13 @@ npm install
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-##  Acknowledgments
+## Acknowledgments
 
 - [Ollama](https://ollama.ai/) - Local LLM runtime
 - [FastAPI](https://fastapi.tiangolo.com/) - Modern Python web framework
@@ -648,8 +648,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
 
-**Built with ❤️ for privacy-conscious AI enthusiasts**
+**Built with passion for privacy-conscious AI enthusiasts**
 
-[⬆ Back to Top](#-allma-studio)
+[Back to Top](#allma-studio)
 
 </div>

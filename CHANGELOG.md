@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2024-01-15
 
-### 🚀 Initial Release
+### Initial Release
 
 This is the first stable release of Allma Studio - a privacy-first, local AI chat application with RAG capabilities.
 
@@ -67,37 +67,37 @@ This is the first stable release of Allma Studio - a privacy-first, local AI cha
 
 ## Frontend Design Evolution
 
-### 🎨 Design System
+### Design System
 
 Complete redesign of Allma RAG frontend with modern, production-ready UI/UX based on 30 years of industry-leading design principles.
 
 ---
 
-## 🎯 Design Principles Applied
+## Design Principles Applied
 
 ### 1. Color Theory
-- ✅ Sophisticated purple-to-blue gradient palette (Primary 50-950)
-- ✅ Complementary accent colors (cyan, teal, emerald, pink, rose)
-- ✅ Warm neutral scale (50-950) for hierarchy
-- ✅ Semantic color usage (success, warning, error)
-- ✅ Dark mode with proper contrast ratios
-- ✅ WCAG AA compliant (4.5:1 minimum)
+- Sophisticated purple-to-blue gradient palette (Primary 50-950)
+- Complementary accent colors (cyan, teal, emerald, pink, rose)
+- Warm neutral scale (50-950) for hierarchy
+- Semantic color usage (success, warning, error)
+- Dark mode with proper contrast ratios
+- WCAG AA compliant (4.5:1 minimum)
 
 ### 2. Typography
-- ✅ Inter font family (300-900 weights)
-- ✅ Optical sizing with font-variation-settings
-- ✅ 8-size type scale (xs to 5xl)
-- ✅ Calculated line heights for readability
-- ✅ JetBrains Mono for code blocks
-- ✅ Gradient text effects for emphasis
-- ✅ Text-wrap balance for headlines
+- Inter font family (300-900 weights)
+- Optical sizing with font-variation-settings
+- 8-size type scale (xs to 5xl)
+- Calculated line heights for readability
+- JetBrains Mono for code blocks
+- Gradient text effects for emphasis
+- Text-wrap balance for headlines
 
 ### 3. Shapes & Layouts
-- ✅ Rounded corners (2xl-5xl border-radius)
-- ✅ Glassmorphism with backdrop blur
-- ✅ Consistent 8px grid system
-- ✅ Gradient meshes and backgrounds
-- ✅ Card-based layouts
+- Rounded corners (2xl-5xl border-radius)
+- Glassmorphism with backdrop blur
+- Consistent 8px grid system
+- Gradient meshes and backgrounds
+- Card-based layouts
 - ✅ Floating elements with blend modes
 
 ### 4. Motion Design

@@ -1,4 +1,4 @@
-# 🤝 Contributing to Allma Studio
+# Contributing to Allma Studio
 
 Thank you for your interest in contributing to Allma Studio! This document provides guidelines and instructions for contributing.
 
@@ -573,4 +573,4 @@ When adding features, update:
 - **GitHub Issues:** Open an issue for bugs or features
 - **Email:** maintainers@example.com
 
-Thank you for contributing to Allma Studio! 🚀
+Thank you for contributing to Allma Studio!

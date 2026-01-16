@@ -1,4 +1,4 @@
-# 📚 API Documentation
+# API Documentation
 
 Complete API reference for Allma Studio backend services.
 

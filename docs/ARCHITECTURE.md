@@ -1,4 +1,4 @@
-# 🏗️ Allma Studio Architecture
+# Architecture
 
 This document provides a deep dive into the architecture of Allma Studio, explaining the design decisions, component interactions, and data flows.
 
