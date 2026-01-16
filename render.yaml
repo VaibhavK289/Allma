@@ -11,7 +11,6 @@ services:
     name: allma-backend
     runtime: python
     region: oregon
-    plan: free
     branch: main
     rootDir: allma-backend
     buildCommand: pip install -r requirements.txt
@@ -37,7 +36,7 @@ services:
       - key: USE_CLOUD_LLM
         value: "true"
       - key: GROQ_API_KEY
-        sync: false  # Will prompt for value during deployment
+        sync: false
 
   # ---------------------------------------------------------------------------
   # Frontend - React Static Site
@@ -45,7 +44,6 @@ services:
   - type: web
     name: allma-frontend
     runtime: static
-    plan: free
     branch: main
     rootDir: allma-frontend
     buildCommand: npm install && npm run build
