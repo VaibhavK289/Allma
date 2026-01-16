@@ -3,17 +3,34 @@
  * 
  * Centralized API communication with the backend.
  * Handles all HTTP requests, error handling, and response transformation.
+ * Falls back to demo mode when backend is unavailable.
  */
 
-const DEFAULT_API_URL = 'http://localhost:8000';
+import { demoApi } from './demoApi';
+
+const DEFAULT_API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 class ApiService {
   constructor(baseUrl = DEFAULT_API_URL) {
     this.baseUrl = baseUrl;
+    this.isDemoMode = false;
+    this.demoApi = demoApi;
   }
 
   setBaseUrl(url) {
     this.baseUrl = url;
+  }
+
+  async checkBackendAvailable() {
+    try {
+      const response = await fetch(`${this.baseUrl}/health/`, { 
+        method: 'GET',
+        signal: AbortSignal.timeout(3000)
+      });
+      return response.ok;
+    } catch {
+      return false;
+    }
   }
 
   async request(endpoint, options = {}) {
@@ -62,6 +79,12 @@ class ApiService {
   // ============================================
 
   async sendMessage(message, options = {}) {
+    // Check if we should use demo mode
+    if (this.isDemoMode || !(await this.checkBackendAvailable())) {
+      this.isDemoMode = true;
+      return this.demoApi.sendMessage(message, options);
+    }
+
     const {
       conversationId,
       useRag = true,
@@ -69,25 +92,31 @@ class ApiService {
       stream = false,
     } = options;
 
-    const response = await this.request('/chat/', {
-      method: 'POST',
-      body: JSON.stringify({
-        message,
-        conversation_id: conversationId,
-        use_rag: useRag,
-        model,
-        stream,
-      }),
-    });
+    try {
+      const response = await this.request('/chat/', {
+        method: 'POST',
+        body: JSON.stringify({
+          message,
+          conversation_id: conversationId,
+          use_rag: useRag,
+          model,
+          stream,
+        }),
+      });
 
-    return {
-      id: response.id,
-      conversationId: response.conversation_id,
-      content: response.content,
-      model: response.model,
-      sources: response.sources || [],
-      usage: response.usage,
-    };
+      return {
+        id: response.id,
+        conversationId: response.conversation_id,
+        content: response.content,
+        model: response.model,
+        sources: response.sources || [],
+        usage: response.usage,
+      };
+    } catch (error) {
+      // Fall back to demo mode on error
+      this.isDemoMode = true;
+      return this.demoApi.sendMessage(message, options);
+    }
   }
 
   async streamMessage(message, options = {}) {
@@ -214,7 +243,15 @@ class ApiService {
   }
 
   async getDocuments() {
-    return this.request('/rag/documents');
+    if (this.isDemoMode) {
+      return this.demoApi.getDocuments();
+    }
+    try {
+      return await this.request('/rag/documents');
+    } catch {
+      this.isDemoMode = true;
+      return this.demoApi.getDocuments();
+    }
   }
 
   async deleteDocument(documentId) {
@@ -232,7 +269,15 @@ class ApiService {
   // ============================================
 
   async listModels() {
-    return this.request('/models/');
+    if (this.isDemoMode) {
+      return this.demoApi.getModels();
+    }
+    try {
+      return await this.request('/models/');
+    } catch {
+      this.isDemoMode = true;
+      return this.demoApi.getModels();
+    }
   }
 
   async switchModel(modelName) {
@@ -254,7 +299,15 @@ class ApiService {
   // ============================================
 
   async healthCheck() {
-    return this.request('/health/');
+    if (this.isDemoMode) {
+      return this.demoApi.checkHealth();
+    }
+    try {
+      return await this.request('/health/');
+    } catch {
+      this.isDemoMode = true;
+      return this.demoApi.checkHealth();
+    }
   }
 
   async liveness() {
