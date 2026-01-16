@@ -100,8 +100,13 @@ class Orchestrator:
             self._ollama_client = AsyncClient(host=self.config.ollama.host)
             
             # Verify Ollama connection
-            models = await self._ollama_client.list()
-            available_models = [m['name'] for m in models.get('models', [])]
+            models_response = await self._ollama_client.list()
+            # Ollama returns Pydantic objects with .models attribute containing model objects
+            models_list = models_response.models if hasattr(models_response, 'models') else []
+            available_models = [
+                m.model if hasattr(m, 'model') else str(m) 
+                for m in models_list
+            ]
             logger.info(f"Available Ollama models: {available_models}")
             
             # Initialize services
@@ -461,16 +466,17 @@ class Orchestrator:
         
         try:
             response = await self._ollama_client.list()
-            models = response.get('models', [])
+            # Ollama returns Pydantic objects, access via attributes
+            models = response.models if hasattr(response, 'models') else []
             
             return OrchestrationResult(
                 success=True,
                 data={
                     "models": [
                         {
-                            "name": m['name'],
-                            "size": m.get('size'),
-                            "modified_at": m.get('modified_at')
+                            "name": m.model if hasattr(m, 'model') else str(m),
+                            "size": getattr(m, 'size', None),
+                            "modified_at": str(getattr(m, 'modified_at', ''))
                         }
                         for m in models
                     ]

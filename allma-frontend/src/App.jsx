@@ -709,9 +709,9 @@ function App() {
       const data = res.ok ? await res.json() : null;
       const aiMessage = {
         role: 'assistant',
-        content: data?.response || '⚠️ Could not get response. Make sure the backend is running.',
+        content: data?.content || data?.response || '⚠️ Could not get response. Make sure the backend is running.',
         timestamp: Date.now(),
-        context: data?.context,
+        sources: data?.sources,
       };
       
       setConversations((convs) => convs.map((c) => (c.id === activeId ? { ...c, messages: [...c.messages, aiMessage] } : c)));

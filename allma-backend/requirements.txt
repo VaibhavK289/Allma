@@ -1,8 +1,14 @@
+# ============================================================
+# Allma AI Backend - Python Dependencies
+# ============================================================
+
 # Core Framework
 fastapi>=0.110.0
-uvicorn>=0.29.0
+uvicorn[standard]>=0.29.0
 pydantic>=2.6.4
+pydantic-settings>=2.2.1
 python-multipart>=0.0.9
+starlette>=0.36.0
 
 # Ollama Integration
 ollama>=0.1.8
@@ -10,16 +16,45 @@ ollama>=0.1.8
 # Vector Store
 chromadb>=0.4.24
 
+# Database
+sqlalchemy>=2.0.25
+aiosqlite>=0.19.0
+alembic>=1.13.1
+
 # Document Processing
-pypdf==4.0.2
-python-docx==1.1.0
-beautifulsoup4==4.12.3
+pypdf>=4.0.2
+python-docx>=1.1.0
+beautifulsoup4>=4.12.3
+lxml>=5.1.0
+
+# Async & HTTP
+aiofiles>=23.2.1
+httpx>=0.27.0
+aiohttp>=3.9.3
 
 # Utilities
-python-dotenv==1.0.1
-aiofiles==23.2.1
-httpx==0.27.0
+python-dotenv>=1.0.1
+tenacity>=8.2.3
+cachetools>=5.3.2
+
+# Logging & Monitoring
+structlog>=24.1.0
+prometheus-client>=0.19.0
+
+# Security
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+
+# Testing (optional - for development)
+# pytest>=8.0.0
+# pytest-asyncio>=0.23.0
+# pytest-cov>=4.1.0
+# httpx>=0.27.0
 
 # Optional: Alternative vector stores (uncomment as needed)
-# faiss-cpu==1.7.4
-# qdrant-client==1.7.3
+# faiss-cpu>=1.7.4
+# qdrant-client>=1.7.3
+
+# Optional: Advanced document processing
+# unstructured>=0.12.0
+# python-magic>=0.4.27

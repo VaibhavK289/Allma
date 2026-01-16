@@ -1,5 +1,5 @@
 """
-Orchestration Layer for Ollama RAG Application
+Orchestration Layer for Allma AI Backend
 
 This module provides the core orchestration capabilities for:
 - LLM interactions via Ollama
@@ -7,6 +7,8 @@ This module provides the core orchestration capabilities for:
 - Document ingestion and processing
 - Vector store management
 - Conversation management
+- Database persistence
+- Error handling and exceptions
 
 Architecture based on the diagrams:
 - RAG Implementation Architecture
@@ -16,6 +18,66 @@ Architecture based on the diagrams:
 
 from .orchestrator import Orchestrator
 from .config import OrchestrationConfig
+from .exceptions import (
+    OrchestrationException,
+    OllamaException,
+    OllamaConnectionError,
+    OllamaModelNotFoundError,
+    RAGException,
+    RAGIngestionError,
+    RAGRetrievalError,
+    VectorStoreException,
+    DocumentException,
+    DocumentNotFoundError,
+    DocumentParseError,
+    ConversationException,
+    ConversationNotFoundError,
+    RateLimitException,
+    InitializationError,
+    NotInitializedError,
+    ErrorCode
+)
+from .database import (
+    DatabaseManager,
+    Conversation,
+    Message,
+    Document,
+    ConversationRepository,
+    MessageRepository,
+    DocumentRepository
+)
 
-__version__ = "1.0.0"
-__all__ = ["Orchestrator", "OrchestrationConfig"]
+__version__ = "2.0.0"
+__all__ = [
+    # Core
+    "Orchestrator",
+    "OrchestrationConfig",
+    
+    # Database
+    "DatabaseManager",
+    "Conversation",
+    "Message", 
+    "Document",
+    "ConversationRepository",
+    "MessageRepository",
+    "DocumentRepository",
+    
+    # Exceptions
+    "OrchestrationException",
+    "OllamaException",
+    "OllamaConnectionError",
+    "OllamaModelNotFoundError",
+    "RAGException",
+    "RAGIngestionError",
+    "RAGRetrievalError",
+    "VectorStoreException",
+    "DocumentException",
+    "DocumentNotFoundError",
+    "DocumentParseError",
+    "ConversationException",
+    "ConversationNotFoundError",
+    "RateLimitException",
+    "InitializationError",
+    "NotInitializedError",
+    "ErrorCode"
+]

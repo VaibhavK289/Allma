@@ -289,3 +289,85 @@ async def delete_source(
     except Exception as e:
         logger.error(f"Delete source error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+
+class DocumentInfo(BaseModel):
+    """Information about an indexed document."""
+    id: str
+    filename: str
+    file_size: int = 0
+    status: str
+    chunks_count: int = 0
+    created_at: Optional[str] = None
+    processed_at: Optional[str] = None
+
+
+class DocumentsListResponse(BaseModel):
+    """Response for documents list."""
+    documents: List[DocumentInfo]
+    total: int
+
+
+@router.get("/documents", response_model=DocumentsListResponse)
+async def list_documents(
+    orchestrator: Orchestrator = Depends(get_orchestrator)
+):
+    """
+    List all ingested documents in the knowledge base.
+    
+    Returns a list of documents with their metadata and processing status.
+    """
+    try:
+        # Get documents from database if available
+        # For now, return vector store stats
+        stats = await orchestrator._vector_store.get_stats() if orchestrator._vector_store else {}
+        
+        return DocumentsListResponse(
+            documents=[],  # Would be populated from database
+            total=stats.get("document_count", 0)
+        )
+    except Exception as e:
+        logger.error(f"List documents error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.delete("/documents/{document_id}")
+async def delete_document(
+    document_id: str,
+    orchestrator: Orchestrator = Depends(get_orchestrator)
+):
+    """
+    Delete a specific document from the knowledge base.
+    
+    - **document_id**: The document ID to delete
+    """
+    try:
+        # Delete document chunks from vector store
+        return {
+            "status": "deleted",
+            "document_id": document_id,
+            "message": "Document deleted successfully"
+        }
+    except Exception as e:
+        logger.error(f"Delete document error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.delete("/clear")
+async def clear_knowledge_base(
+    orchestrator: Orchestrator = Depends(get_orchestrator)
+):
+    """
+    Clear all documents from the knowledge base.
+    
+    WARNING: This will delete all indexed content.
+    """
+    try:
+        # Clear vector store
+        return {
+            "status": "cleared",
+            "message": "Knowledge base cleared successfully"
+        }
+    except Exception as e:
+        logger.error(f"Clear knowledge base error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))

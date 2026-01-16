@@ -82,17 +82,14 @@ class ChromaDBBackend(VectorStoreBackend):
         """Initialize ChromaDB connection."""
         try:
             import chromadb
-            from chromadb.config import Settings
             
             # Ensure persist directory exists
             os.makedirs(self.config.persist_directory, exist_ok=True)
             
-            # Initialize ChromaDB client
-            self._client = chromadb.Client(Settings(
-                chroma_db_impl="duckdb+parquet",
-                persist_directory=self.config.persist_directory,
-                anonymized_telemetry=False
-            ))
+            # Initialize ChromaDB client with new API (v0.4+)
+            self._client = chromadb.PersistentClient(
+                path=self.config.persist_directory
+            )
             
             # Get or create collection
             self._collection = self._client.get_or_create_collection(
@@ -104,6 +101,9 @@ class ChromaDBBackend(VectorStoreBackend):
             
         except ImportError:
             logger.warning("ChromaDB not installed, using in-memory fallback")
+            self._use_fallback()
+        except Exception as e:
+            logger.warning(f"ChromaDB initialization failed: {e}, using in-memory fallback")
             self._use_fallback()
     
     def _use_fallback(self):
