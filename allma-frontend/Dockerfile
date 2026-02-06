@@ -45,7 +45,7 @@ RUN npm run build
 # -----------------------------------------------------------------------------
 # Stage 3: Production - Nginx server
 # -----------------------------------------------------------------------------
-FROM nginx:1.25-alpine AS production
+FROM nginx:1.29.5-alpine AS production
 
 # Labels for container metadata
 LABEL org.opencontainers.image.title="Allma AI Studio Frontend" \
