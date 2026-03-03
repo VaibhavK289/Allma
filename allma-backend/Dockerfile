@@ -6,7 +6,7 @@
 # -----------------------------------------------------------------------------
 # Stage 1: Builder - Install dependencies and prepare application
 # -----------------------------------------------------------------------------
-FROM python:3.11-slim-bookworm AS builder
+FROM python:3.14-slim-bookworm AS builder
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
@@ -33,7 +33,7 @@ RUN pip install --upgrade pip && \
 # -----------------------------------------------------------------------------
 # Stage 2: Production - Minimal runtime image
 # -----------------------------------------------------------------------------
-FROM python:3.11-slim-bookworm AS production
+FROM python:3.14-slim-bookworm AS production
 
 # Labels for container metadata
 LABEL org.opencontainers.image.title="Allma AI Studio Backend" \
