@@ -56,7 +56,7 @@ jobs:
           pytest --cov=orchestration --cov-report=xml --cov-report=html -v || true
 
       - name: Upload coverage
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           files: ./allma-backend/coverage.xml
           flags: backend
